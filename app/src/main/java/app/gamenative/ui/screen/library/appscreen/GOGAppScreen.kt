@@ -309,7 +309,7 @@ class GOGAppScreen : BaseAppScreen() {
         }
     }
 
-    override fun onPauseResumeClick(context: Context, libraryItem: LibraryItem) {
+    override fun onPauseResumeClick(context: Context, libraryItem: LibraryItem, shouldPause: Boolean) {
         Timber.tag(TAG).i("onPauseResumeClick: appId=${libraryItem.appId}")
         // GOG downloads cannot be paused - only canceled
         // This method should not be called for GOG since hasPartialDownload returns false,
@@ -317,7 +317,7 @@ class GOGAppScreen : BaseAppScreen() {
         val gameId = libraryItem.gameId.toString()
         val downloadInfo = GOGService.getDownloadInfo(gameId)
 
-        if (downloadInfo != null) {
+        if (shouldPause && downloadInfo != null) {
             Timber.tag(TAG).i("Cancelling GOG download: ${libraryItem.appId}")
             downloadInfo.cancel()
             GOGService.cleanupDownload(gameId)
