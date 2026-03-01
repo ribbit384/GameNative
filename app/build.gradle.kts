@@ -145,6 +145,28 @@ android {
         }
     }
 
+    flavorDimensions += "variant"
+
+    productFlavors {
+        create("default") {
+            dimension = "variant"
+            // Inherits applicationId from defaultConfig ("app.gamenative")
+            isDefault = true
+        }
+        create("ludashi") {
+            dimension = "variant"
+            applicationId = "com.ludashi.benchmark"
+        }
+        create("antutu") {
+            dimension = "variant"
+            applicationId = "com.antutu.ABenchMark"
+        }
+        create("pubg") {
+            dimension = "variant"
+            applicationId = "com.tencent.ig"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

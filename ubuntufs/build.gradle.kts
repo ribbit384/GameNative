@@ -11,6 +11,15 @@ android {
         // testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions += "variant"
+
+    productFlavors {
+        create("default") { dimension = "variant" }
+        create("ludashi")  { dimension = "variant" }
+        create("antutu")   { dimension = "variant" }
+        create("pubg")     { dimension = "variant" }
+    }
+
     buildTypes {
         create("release-signed") {
             initWith(getByName("release"))
